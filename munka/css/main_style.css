@@ -1,0 +1,58 @@
+body {
+	margin: 0;
+}
+
+header, footer {
+    padding: 0.5em; 
+    color: white;
+    background-color: red;
+    clear: left;
+}
+h1.header {
+    padding: 0;
+    margin: 0;
+}
+div#user {
+    float: right;
+}
+aside {
+    float: left;
+    width: 160px;
+    margin: 0;
+    padding: 1em;
+}
+section {
+    padding: 1em;
+}
+ul {
+    float:left;
+    width:100%; /* A menü az alatta levő szövegtől elválik, birtokolja a teljes vízszintes sávját. */
+    padding:0;
+    margin:0;
+    list-style-type:none;
+    background-color: #f3f3f3;
+}        
+a {
+    float:left;
+    width:6em; /* Fix szélességű gombok érhetők el. Érdemes azonban vigyázni ezzel a módszerrel, mert ha a szöveg nem fér ki, a dizájn szétesik. */
+    text-decoration:none; /* Ne legyen aláhúzva a link. */
+    color:#666;
+    background-color:#eeeeee;
+    padding:0.2em 0.6em;
+}
+a.selected{
+    background-color: #008CBA !important;
+    color:white;
+}
+
+a:hover { background-color:#dddddd} /* Az egérkurzorra színváltással reagál a menüpont. */
+
+
+li { display:inline } /* Ez a sor oldja meg, hogy a menüpontok egymás mellé kerüljenek. */
+
+img.jobbra {
+    float: right;
+    margin: 5px 0 5px 5px;
+    border: 2px solid #ddd;
+    padding: 2px;
+}

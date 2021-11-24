@@ -1,0 +1,25 @@
+article {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin: 10px 0;
+}
+
+.hir {
+	background-color : transparent;
+	color: black;
+	padding: 0;
+	text-decoration: underline;
+	width: auto;
+}
+
+article {
+	margin-top: 50px;
+}
+
+.hir:hover {
+	background-color: transparent;
+}
+
+.detail {
+	font-size: small;
+}

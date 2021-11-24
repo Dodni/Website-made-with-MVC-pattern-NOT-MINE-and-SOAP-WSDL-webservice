@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:soap-enc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:soap-env="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://localhost/munka/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://localhost/munka/soap/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://localhost/munka/soap/">
+      <xsd:complexType name="Jelentkezesek">
+        <xsd:all>
+          <xsd:element name="hibakod" type="xsd:int" minOccurs="0" maxOccurs="1"/>
+          <xsd:element name="uzenet" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+          <xsd:element name="jelentkezesek" type="tns:JelentkezesArray" minOccurs="0" maxOccurs="1"/>
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="Jelentkezes">
+        <xsd:all>
+          <xsd:element name="jelentkezonev" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+          <xsd:element name="kepzesnev" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+          <xsd:element name="sorrend" type="xsd:int" minOccurs="0" maxOccurs="1"/>
+          <xsd:element name="szerzett" type="xsd:int" minOccurs="0" maxOccurs="1"/>
+          <xsd:element name="minimum" type="xsd:int" minOccurs="0" maxOccurs="1"/>
+        </xsd:all>
+      </xsd:complexType>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="getFelveteliRequest"/>
+  <wsdl:message name="getFelveteliResponse">
+    <wsdl:part name="getFelveteliReturn" type="tns:Jelentkezesek"/>
+  </wsdl:message>
+  <wsdl:portType name="FelveteliPortType">
+    <wsdl:operation name="getFelveteli">
+      <wsdl:documentation/>
+      <wsdl:input message="tns:getFelveteliRequest"/>
+      <wsdl:output message="tns:getFelveteliResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="FelveteliBinding" type="tns:FelveteliPortType">
+    <soap-env:binding xmlns="http://schemas.xmlsoap.org/wsdl/soap/" style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="getFelveteli">
+      <soap-env:operation xmlns="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="http://localhost/munka/soap/szerver.php?method=getFelveteli" style="rpc"/>
+      <wsdl:input>
+        <soap-env:body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap-env:body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Felveteli">
+    <wsdl:documentation/>
+    <wsdl:port name="FelveteliPort" binding="tns:FelveteliBinding">
+      <soap-env:address location="http://localhost/munka/soap/szerver.php"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
