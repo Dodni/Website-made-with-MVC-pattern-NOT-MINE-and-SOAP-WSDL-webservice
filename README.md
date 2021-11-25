@@ -1,1 +1,1 @@
-# web2_beadando_part1
+# Ez a beadandó MVC módszerrel készült 
