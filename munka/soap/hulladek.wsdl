@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:soap-enc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:soap-env="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://localhost/munka/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://localhost/munka/soap/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://localhost/munka/soap/">
+      <xsd:complexType name="Hulladekok">
+        <xsd:all>
+          <xsd:element name="hibakod" type="xsd:int" minOccurs="0" maxOccurs="1"/>
+          <xsd:element name="uzenet" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+          <xsd:element name="hulladekok" type="tns:HulladekokArray" minOccurs="0" maxOccurs="1"/>
+        </xsd:all>
+      </xsd:complexType>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="getHulladekRequest"/>
+  <wsdl:message name="getHulladekResponse">
+    <wsdl:part name="getHulladekReturn" type="tns:Hulladekok"/>
+  </wsdl:message>
+  <wsdl:portType name="HulladekPortType">
+    <wsdl:operation name="getHulladek">
+      <wsdl:documentation/>
+      <wsdl:input message="tns:getHulladekRequest"/>
+      <wsdl:output message="tns:getHulladekResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="HulladekBinding" type="tns:HulladekPortType">
+    <soap-env:binding xmlns="http://schemas.xmlsoap.org/wsdl/soap/" style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="getHulladek">
+      <soap-env:operation xmlns="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="http://localhost/munka/soap/szerver.php?method=getHulladek" style="rpc"/>
+      <wsdl:input>
+        <soap-env:body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap-env:body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Hulladek">
+    <wsdl:documentation/>
+    <wsdl:port name="HulladekPort" binding="tns:HulladekBinding">
+      <soap-env:address location="http://localhost/munka/soap/szerver.php"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
