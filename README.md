@@ -1,1 +1,1 @@
-# Ez a beadandó MVC módszerrel készült 
+# Ez a beadandó MVC módszerrel készült és SOAP webszolgáltatással
